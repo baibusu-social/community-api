@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - release # Triggers when code is pushed to the release branch
+      - main # Triggers when code is pushed to the release branch
 
 jobs:
   release:
