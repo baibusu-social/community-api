@@ -1,3 +1,4 @@
+# image build to GHCR
 name: Image Build
 on:
   # publish on releases only, e.g. v2.1.13 (image tagged as "2.1.13" - "v" prefix is removed)
