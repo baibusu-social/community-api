@@ -24,4 +24,4 @@ COPY --from=build /app/dist ./dist
 COPY package.json pnpm-lock.yaml* ./
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store CI=true pnpm install --prod --frozen-lockfile
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/src/index.js"]

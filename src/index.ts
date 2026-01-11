@@ -17,9 +17,10 @@ app.use(prettyJSON())
 app.use(logger())
 
 // OpenAPI spec endpoint
-app.get(
-  '/doc',
-  openAPIRouteHandler(app, {
+app.get('/doc', (c, next) => {
+  const origin = new URL(c.req.url).origin
+
+  return openAPIRouteHandler(app, {
     documentation: {
       info: {
         title: 'Baibusu API',
@@ -27,7 +28,7 @@ app.get(
         description: 'API for fetching insults',
       },
       servers: [
-        { url: 'http://localhost:3000', description: 'Local Server' },
+        { url: origin, description: 'Current Server' },
       ],
       components: {
         securitySchemes: {
@@ -39,8 +40,8 @@ app.get(
         }
       }
     },
-  })
-)
+  })(c, next)
+})
 
 // Scalar API docs
 app.get(
