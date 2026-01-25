@@ -8,6 +8,7 @@ import 'dotenv/config'
 
 import insultsRoute from './routes/insults.js'
 import landing from './routes/landing.js'
+import llmRoute from './routes/llm.js'
 
 const app = new Hono()
 
@@ -55,6 +56,7 @@ app.get(
 
 // Mount API routes
 app.route('/api', insultsRoute)
+app.route('/llm', llmRoute)
 
 serve(
   {
